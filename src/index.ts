@@ -1,10 +1,11 @@
-import rn from "random-number";
+const rn = require("random-number");
 
-class History {
-  constructor(size) {
+class HistoryManager {
+  public roundsSinceLastZero: number;
+  constructor(size: number) {
     this.roundsSinceLastZero = 0;
   }
-  push(el) {
+  push(el: number) {
     if (el === 0) {
       this.roundsSinceLastZero = 0;
     } else {
@@ -14,35 +15,36 @@ class History {
 }
 
 class Balance {
+  public balance: number;
+  public min: number;
+  public max: number;
+
   constructor() {
     this.balance = 0;
     this.min = 0;
     this.max = 0;
   }
 
-  add(amount) {
+  add(amount: number) {
     this.balance += amount;
     this.max = Math.max(this.max, this.balance);
   }
 
-  subtract(amount) {
+  subtract(amount: number) {
     this.balance -= amount;
     this.min = Math.min(this.min, this.balance);
   }
 }
 
 class Bet {
-  constructor(balance, history) {
-    this.history = history;
-    this.balance = balance;
-  }
+  constructor(public balance: Balance, public history: HistoryManager) {}
 
   generate() {
     const number = rn({ min: 0, max: 36, integer: true });
     this.history.push(number);
     return number;
   }
-  place(amount, target) {
+  place(amount: number, target: number) {
     const number = this.generate();
     if (number === target) {
       this.balance.add(amount * 35);
@@ -58,7 +60,7 @@ const rounds = 1_000_000;
 
 let betsPlaced = 0;
 
-const bet = new Bet(new Balance(), new History(20));
+const bet = new Bet(new Balance(), new HistoryManager(20));
 
 console.clear();
 
