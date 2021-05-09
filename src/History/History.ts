@@ -1,4 +1,4 @@
-class HistoryManager {
+class History {
   public roundsSinceLastZero: number;
   constructor(size: number) {
     this.roundsSinceLastZero = 0;
@@ -12,4 +12,4 @@ class HistoryManager {
   }
 }
 
-export default HistoryManager;
+export default History;

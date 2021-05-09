@@ -1,6 +1,6 @@
 import Bet from "./Bet";
 import Balance from "./Balance";
-import HistoryManager from "./HistoryManager";
+import History from "./History";
 
 const targetNumber = 0;
 const betAmount = 0.5;
@@ -8,7 +8,7 @@ const rounds = 1_000_000;
 
 let betsPlaced = 0;
 
-const bet = new Bet(new Balance(), new HistoryManager(20));
+const bet = new Bet(new Balance(), new History(20));
 
 console.clear();
 
