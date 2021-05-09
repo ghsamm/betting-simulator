@@ -5,7 +5,7 @@ const waitForRareStreak = new WaitForRareStreak({
   betAmount: 1,
   rounds: 10 ** 2,
   startBettingAt: 40,
-  stopBettingAt: 70
+  stopBettingAt: 75
 });
 
 waitForRareStreak.run();

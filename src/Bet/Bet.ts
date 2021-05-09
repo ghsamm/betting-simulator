@@ -11,11 +11,16 @@ class Bet {
     private winningMultiplier: number
   ) {}
 
-  generate() {
+  private generate() {
     const number = rn({ min: 0, max: this.wheelSlots, integer: true });
     this.history.push(number);
     return number;
   }
+
+  skip() {
+    this.generate();
+  }
+
   place(amount: number, target: number) {
     const number = this.generate();
     if (number === target) {

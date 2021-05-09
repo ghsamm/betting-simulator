@@ -34,7 +34,7 @@ class WaitForRareStreak extends Strategy {
       this.bet.place(this.betAmount, this.targetNumber);
       this.betsPlaced++;
     } else {
-      this.bet.generate();
+      this.bet.skip();
     }
   }
 
