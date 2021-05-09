@@ -8,7 +8,7 @@ const rounds = 1_000_000;
 
 let betsPlaced = 0;
 
-const bet = new Bet(new Balance(), new History(20));
+const bet = new Bet(new Balance(), new History(20), 37, 35);
 
 console.clear();
 
