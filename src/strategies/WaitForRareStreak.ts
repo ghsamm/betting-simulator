@@ -42,9 +42,7 @@ class WaitForRareStreak extends Strategy {
     const report = {
       rounds: this.rounds,
       betsPlaced: this.betsPlaced,
-      roundsPlayed: ((this.betsPlaced / this.rounds) * 100)
-        .toFixed(2)
-        .concat("%"),
+      roundsPlayedPerc: (this.betsPlaced / this.rounds) * 100,
       balance: {
         balance: this.balance.balance,
         min: this.balance.min,

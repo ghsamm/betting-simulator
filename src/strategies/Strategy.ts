@@ -2,6 +2,17 @@ import Balance from "../Balance";
 import Bet from "../Bet";
 import History from "../History";
 
+interface Report {
+  rounds: number;
+  betsPlaced: number;
+  roundsPlayedPerc: number;
+  balance: {
+    balance: number;
+    min: number;
+    max: number;
+  };
+}
+
 abstract class Strategy {
   protected balance: Balance;
   protected history: History;
@@ -25,7 +36,7 @@ abstract class Strategy {
     }
   }
 
-  abstract getReport(): any;
+  abstract getReport(): Report;
 }
 
 export default Strategy;
