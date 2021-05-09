@@ -1,26 +1,14 @@
-import Bet from "./Bet";
-import Balance from "./Balance";
-import History from "./History";
+import WaitForRareStreak from "./strategies/WaitForRareStreak";
 
-const targetNumber = 0;
-const betAmount = 0.5;
-const rounds = 1_000_000;
+const waitForRareStreak = new WaitForRareStreak({
+  targetNumber: 0,
+  betAmount: 1,
+  rounds: 10 ** 2,
+  startBettingAt: 40,
+  stopBettingAt: 70
+});
 
-let betsPlaced = 0;
-
-const bet = new Bet(new Balance(), new History(20), 37, 35);
+waitForRareStreak.run();
 
 console.clear();
-
-for (let i = 0; i < rounds; i++) {
-  const roundsSinceLastZero = bet.history.roundsSinceLastZero;
-
-  if (roundsSinceLastZero >= 100 && roundsSinceLastZero < 120) {
-    bet.place(betAmount, targetNumber);
-    betsPlaced++;
-  } else {
-    bet.generate();
-  }
-}
-
-console.log(bet.balance, (betsPlaced / rounds) * 100 + "%");
+console.log(waitForRareStreak.getReport());

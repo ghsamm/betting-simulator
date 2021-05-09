@@ -24,6 +24,8 @@ abstract class Strategy {
       this.runRound();
     }
   }
+
+  abstract getReport(): any;
 }
 
 export default Strategy;

@@ -37,6 +37,23 @@ class WaitForRareStreak extends Strategy {
       this.bet.generate();
     }
   }
+
+  getReport() {
+    const report = {
+      rounds: this.rounds,
+      betsPlaced: this.betsPlaced,
+      roundsPlayed: ((this.betsPlaced / this.rounds) * 100)
+        .toFixed(2)
+        .concat("%"),
+      balance: {
+        balance: this.balance.balance,
+        min: this.balance.min,
+        max: this.balance.max
+      }
+    };
+
+    return report;
+  }
 }
 
 export default WaitForRareStreak;
